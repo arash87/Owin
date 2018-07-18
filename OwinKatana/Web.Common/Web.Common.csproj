@@ -45,5 +45,10 @@
   <ItemGroup>
     <None Include="package.json" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\app.jsx" />
+    <Content Include="src\BasicRoutingExample.jsx" />
+    <Content Include="webpack.config.js" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

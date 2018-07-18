@@ -7,17 +7,18 @@ namespace Web.Modules
 {
 	public class NancyDemoModule : NancyModule
 	{
+		dynamic IndexPage() { return View["index"]; }
 		public NancyDemoModule()
 		{
-			Get["/"] = _ =>
-			{
-				return View["index"];
-			};
+			Get["/"] = _ => { return IndexPage(); };
+			Get["/(.*)"] = _ => { return IndexPage(); };
+			Get["/(.*)/(.*)"] = _ => { return IndexPage(); };
+			Get["/(.*)/(.*)/(.*)"] = _ => { return IndexPage(); };
 
-			Get["/Auth/Login"] = _ =>
-			{
-				return View["login"];
-			};
+			//Get["/Auth/Login"] = _ =>
+			//{
+			//	return View["login"];
+			//};
 		}
 	}
 }

@@ -37,23 +37,23 @@ namespace Web
 			app.UseWebApi(config);
 
 			//Add Nancy
-			//app.UseNancy();
+			app.UseNancy();
 
-			var physicalFileSystem = new PhysicalFileSystem(@"./Views");
-			var options = new FileServerOptions
-			{
-				EnableDefaultFiles = true,
-				FileSystem = physicalFileSystem
-			};
+			//var physicalFileSystem = new PhysicalFileSystem(@"./Views");
+			//var options = new FileServerOptions
+			//{
+			//	EnableDefaultFiles = true,
+			//	FileSystem = physicalFileSystem
+			//};
 
-			options.StaticFileOptions.FileSystem = physicalFileSystem;
-			options.StaticFileOptions.ServeUnknownFileTypes = true;
-			options.DefaultFilesOptions.DefaultFileNames = new[]
-			{
-				"index.html"
-			};
+			//options.StaticFileOptions.FileSystem = physicalFileSystem;
+			//options.StaticFileOptions.ServeUnknownFileTypes = true;
+			//options.DefaultFilesOptions.DefaultFileNames = new[]
+			//{
+			//	"index.html"
+			//};
 
-			app.UseFileServer(options);
+			//app.UseFileServer(options);
 		}
 	}
 }
