@@ -328,3 +328,5 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
+OwinKatana/Web/dist/bundle.js.map
+OwinKatana/Web/dist/bundle.js
