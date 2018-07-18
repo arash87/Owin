@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Web.Http;
 using Microsoft.Owin;
+using Microsoft.Owin.Security.Cookies;
 using Newtonsoft.Json.Serialization;
 using Owin;
 
@@ -13,6 +14,14 @@ namespace Web
 		public void Configuration(IAppBuilder app)
 		{
 			// For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=316888
+
+			//Add CookieAuthentication
+			app.UseCookieAuthentication(new CookieAuthenticationOptions()
+			{
+				AuthenticationType = "ApplicationCookie",
+				ExpireTimeSpan = System.TimeSpan.FromSeconds(10)				
+			});
+
 
 			//Add WebApi
 			var config = new HttpConfiguration();

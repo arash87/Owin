@@ -1,4 +1,7 @@
-﻿using Nancy;
+﻿using System.Collections.Generic;
+using System.Security.Claims;
+using System.Web;
+using Nancy;
 
 namespace Web.Modules
 {
@@ -9,6 +12,11 @@ namespace Web.Modules
 			Get["/"] = _ =>
 			{
 				return View["index"];
+			};
+
+			Get["/Auth/Login"] = _ =>
+			{
+				return View["login"];
 			};
 		}
 	}
