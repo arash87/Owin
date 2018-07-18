@@ -1,11 +1,24 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <title>Nancy index file</title>
+	<meta charset="utf-8" />
+	<title>Nancy index file</title>
+	<script
+		src="https://code.jquery.com/jquery-3.3.1.min.js"
+		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+		crossorigin="anonymous"></script>
 	<script src="~/scripts/script.js"></script>
 </head>
 <body>
 <h1>This works</h1>
+
 </body>
 </html>
+<script>
+	$(function () {
+		$.getJSON('/api/bugs', function (data) {
+			var model = data;
+			console.info("Returned data: " + model);
+		})
+	})
+</script>
