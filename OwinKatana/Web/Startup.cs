@@ -22,6 +22,7 @@ namespace Web
 				ExpireTimeSpan = System.TimeSpan.FromSeconds(10)				
 			});
 
+			app.MapSignalR();
 
 			//Add WebApi
 			var config = new HttpConfiguration();

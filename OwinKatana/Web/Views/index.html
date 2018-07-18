@@ -3,11 +3,11 @@
 <head>
 	<meta charset="utf-8" />
 	<title>Nancy index file</title>
-	<script
-		src="https://code.jquery.com/jquery-3.3.1.min.js"
-		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-		crossorigin="anonymous"></script>
+
+	<script src="~/scripts/jquery-1.10.2.min.js"></script>
+	<script src="~/scripts/jquery.signalR-2.1.2.js"></script>
 	<script src="~/scripts/script.js"></script>
+	<script src="~/signalr/hubs"></script>
 </head>
 <body>
 <h1>This works</h1>
@@ -16,9 +16,35 @@
 </html>
 <script>
 	$(function () {
-		$.getJSON('/api/secret', function (data) {
-			var model = data;
-			console.info("Returned data: " + model);
-		})
+		//$.getJSON('/api/secret', function (data) {
+		//	var model = data;
+		//	console.info("Returned data: " + model);
+		//})
+		$.connection.hub.logging = true;
+		var bugsHub = $.connection.bugs;
+		bugsHub.client.sayHi = function(someTxt) {
+			console.info("This is from hub: " + someTxt)
+		}
+
+		$.connection.hub.start().done(function() {
+			//bugsHub.server.send("BBB");
+			$.getJSON('/api/broadcast',
+				function(data) {
+					console.info("Broadcasted")
+				});
+		}).fail(function(reason) {
+			console.info("SignalR connection failed: " + reason)
+		});
+
+
+		//$.connection.hub.start().done(function() {
+		//	setTimeout(function() {
+		//		bugsHub.server.send("BBB");	
+		//	}, 3000);
+
+		//});
+
+		
+
 	})
 </script>
