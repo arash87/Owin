@@ -1,7 +1,11 @@
-﻿using System.Linq;
+﻿using System.IO;
+using System.Linq;
+using System.Reflection;
 using System.Web.Http;
 using Microsoft.Owin;
+using Microsoft.Owin.FileSystems;
 using Microsoft.Owin.Security.Cookies;
+using Microsoft.Owin.StaticFiles;
 using Newtonsoft.Json.Serialization;
 using Owin;
 
@@ -33,7 +37,23 @@ namespace Web
 			app.UseWebApi(config);
 
 			//Add Nancy
-			app.UseNancy();
+			//app.UseNancy();
+
+			var physicalFileSystem = new PhysicalFileSystem(@"./Views");
+			var options = new FileServerOptions
+			{
+				EnableDefaultFiles = true,
+				FileSystem = physicalFileSystem
+			};
+
+			options.StaticFileOptions.FileSystem = physicalFileSystem;
+			options.StaticFileOptions.ServeUnknownFileTypes = true;
+			options.DefaultFilesOptions.DefaultFileNames = new[]
+			{
+				"index.html"
+			};
+
+			app.UseFileServer(options);
 		}
 	}
 }

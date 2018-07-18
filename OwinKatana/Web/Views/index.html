@@ -4,10 +4,10 @@
 	<meta charset="utf-8" />
 	<title>Nancy index file</title>
 
-	<script src="~/scripts/jquery-1.10.2.min.js"></script>
-	<script src="~/scripts/jquery.signalR-2.1.2.js"></script>
-	<script src="~/scripts/script.js"></script>
-	<script src="~/signalr/hubs"></script>
+	<script src="/scripts/jquery-1.10.2.min.js"></script>
+	<script src="/scripts/jquery.signalR-2.1.2.js"></script>
+	<script src="/scripts/script.js"></script>
+	<script src="/signalr/hubs"></script>
 </head>
 <body>
 <h1>This works</h1>
@@ -25,7 +25,7 @@
 		bugsHub.client.sayHi = function(someTxt) {
 			console.info("This is from hub: " + someTxt)
 		}
-
+	
 		$.connection.hub.start().done(function() {
 			//bugsHub.server.send("BBB");
 			$.getJSON('/api/broadcast',
